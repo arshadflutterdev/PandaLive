@@ -1,12 +1,15 @@
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
+import 'package:pandalive/Widgets/Buttons/elevatedbutton0.dart';
 import 'package:pandalive/Widgets/Buttons/icontbutton0.dart';
 import 'package:pandalive/Widgets/Buttons/textbutton0.dart';
 import 'package:pandalive/Widgets/TextFields/textfield0.dart';
@@ -26,6 +29,20 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController userController = TextEditingController();
   TextEditingController adressController = TextEditingController();
   TextEditingController dobController = TextEditingController();
+  File? image;
+  //function to pick image
+  Future<void> profileimage() async {
+    final XFile? imagepic = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
+    setState(() {
+      image = File(imagepic!.path);
+      if (image == null) {
+        return;
+      }
+      print("here is image path$image");
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,12 +80,22 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 100,
                 width: 100,
                 decoration: BoxDecoration(
+                  image: image != null
+                      ? DecorationImage(
+                          image: FileImage(image!),
+                          fit: BoxFit.cover,
+                        )
+                      : null,
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.amber),
                 ),
                 child: Iconbutton0(
-                  image: Icon(Icons.add_a_photo_outlined, color: Colors.amber),
-                  onPressed: () {},
+                  image: image == null
+                      ? Icon(Icons.add_a_photo_outlined, color: Colors.amber)
+                      : SizedBox.shrink(),
+                  onPressed: () async {
+                    await profileimage();
+                  },
                 ),
               ),
               Gap(height * 0.03),
@@ -78,14 +105,14 @@ class _SignupScreenState extends State<SignupScreen> {
                 icons: Image(image: AssetImage(AppImages.message)),
                 keyboardtypee: TextInputType.emailAddress,
               ),
-              Gap(height * 0.026),
+              Gap(height * 0.016),
               Textfield0(
                 controller: passwordController,
                 labeltext: Text("Enter Password"),
                 icons: Image(image: AssetImage(AppImages.lock)),
                 keyboardtypee: TextInputType.number,
               ),
-              Gap(height * 0.026),
+              Gap(height * 0.016),
               Textfield0(
                 controller: cpasswordController,
                 labeltext: Text("Confirm Password"),
@@ -93,7 +120,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 keyboardtypee: TextInputType.number,
               ),
 
-              Gap(height * 0.026),
+              Gap(height * 0.016),
               Textfield0(
                 controller: nameController,
                 labeltext: Text("Enter Full name"),
@@ -104,14 +131,14 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 keyboardtypee: TextInputType.name,
               ),
-              Gap(height * 0.026),
+              Gap(height * 0.016),
               Textfield0(
                 controller: userController,
                 labeltext: Text("Enter Username"),
                 icons: Image(image: AssetImage(AppImages.at)),
                 keyboardtypee: TextInputType.name,
               ),
-              Gap(height * 0.026),
+              Gap(height * 0.016),
               Textfield0(
                 controller: adressController,
                 labeltext: Text("Enter Adress"),
@@ -122,7 +149,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 keyboardtypee: TextInputType.number,
               ),
-              Gap(height * 0.026),
+              Gap(height * 0.016),
               Textfield0(
                 controller: dobController,
                 labeltext: Text("Enter DOB-Ex 09/10/2000"),
@@ -134,7 +161,19 @@ class _SignupScreenState extends State<SignupScreen> {
                 keyboardtypee: TextInputType.datetime,
               ),
 
-              Gap(height * 0.04),
+              Gap(height * 0.03),
+              Elevatedbutton0(
+                w: width * 0.88,
+                h: height * 0.065,
+
+                bgColour: Colors.amber,
+                onPressed: () {
+                  Get.toNamed(AppRoutes.login);
+                },
+                text: 'Login',
+              ),
+              Gap(height * 0.028),
+
               Image(image: AssetImage(AppImages.or)),
               Gap(height * 0.03),
               Row(

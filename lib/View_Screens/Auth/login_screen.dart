@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
@@ -72,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   labeltext: Text("Enter Your Email"),
                   keyboardtypee: TextInputType.emailAddress,
                 ),
-                Gap(heigth * 0.020),
+                Gap(heigth * 0.016),
                 Textfield0(
                   controller: passwordController,
                   labeltext: Text("Enter Password"),

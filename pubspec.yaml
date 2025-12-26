@@ -37,6 +37,7 @@ dependencies:
   gap: ^3.0.1
   google_fonts: ^6.3.3
   get: ^4.7.3
+  image_picker: ^1.2.1
 
 dev_dependencies:
   flutter_test:
