@@ -35,8 +35,8 @@ class Textfield0 extends StatelessWidget {
           fontWeight: FontWeight.normal,
         ),
 
-        prefix: icons,
-        suffix: suffixx,
+        prefixIcon: icons,
+        suffixIcon: suffixx,
         filled: true,
         fillColor: AppColours.textfieldC,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),

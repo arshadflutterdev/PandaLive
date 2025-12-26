@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:pandalive/Routes/app_routes.dart';
+import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
@@ -18,63 +19,124 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController cpasswordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController userController = TextEditingController();
+  TextEditingController adressController = TextEditingController();
+  TextEditingController dobController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double height = HeightWidth.screenHeight(context);
     double width = HeightWidth.screenWidth(context);
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Create Account",
+          style: AppStyle.logoText.copyWith(
+            fontSize: 18,
+            letterSpacing: 5,
+            decoration: TextDecoration.underline,
+            decorationColor: Colors.amber,
+            decorationStyle: TextDecorationStyle.dashed,
+          ),
+        ),
+
+        backgroundColor: Colors.black,
+        leading: Iconbutton0(
+          image: Icon(Icons.arrow_back_ios_new, color: Colors.white),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+      ),
       backgroundColor: Colors.black,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Gap(height * 0.05),
-              Image(
-                height: height * 0.15,
-                width: width * 010,
-                image: AssetImage(AppImages.applogo),
-              ),
-              Text(
-                "PandaLive",
-                style: AppStyle.logoText.copyWith(fontSize: 25),
-              ),
-              Gap(height * 0.06),
-
-              Text(
-                "WelCome Back!",
-                style: AppStyle.logoText.copyWith(
-                  fontSize: 18,
-                  letterSpacing: 5,
-                  decoration: TextDecoration.underline,
-                  decorationColor: Colors.amber,
-                  decorationStyle: TextDecorationStyle.dashed,
+              Container(
+                height: 100,
+                width: 100,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.amber),
+                ),
+                child: Iconbutton0(
+                  image: Icon(Icons.add_a_photo_outlined, color: Colors.amber),
+                  onPressed: () {},
                 ),
               ),
-
               Gap(height * 0.03),
               Textfield0(
-                labeltext: Text("Enter Your Email"),
+                controller: emailController,
+                labeltext: Text("Enter Email"),
+                icons: Image(image: AssetImage(AppImages.message)),
                 keyboardtypee: TextInputType.emailAddress,
               ),
               Gap(height * 0.026),
               Textfield0(
+                controller: passwordController,
                 labeltext: Text("Enter Password"),
+                icons: Image(image: AssetImage(AppImages.lock)),
                 keyboardtypee: TextInputType.number,
               ),
-              // Gap(heigth * 0.02),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Textbutton0(
-                  text: 'Forget Password ?',
-                  onPressed: () {},
-                  textcolor: Colors.amber,
-                ),
+              Gap(height * 0.026),
+              Textfield0(
+                controller: cpasswordController,
+                labeltext: Text("Confirm Password"),
+                icons: Image(image: AssetImage(AppImages.lock)),
+                keyboardtypee: TextInputType.number,
               ),
-              Gap(height * 0.06),
-              Image(image: AssetImage(AppImages.or)),
+
+              Gap(height * 0.026),
+              Textfield0(
+                controller: nameController,
+                labeltext: Text("Enter Full name"),
+                icons: Icon(
+                  CupertinoIcons.profile_circled,
+                  size: 38,
+                  color: AppColours.iconcolours,
+                ),
+                keyboardtypee: TextInputType.name,
+              ),
+              Gap(height * 0.026),
+              Textfield0(
+                controller: userController,
+                labeltext: Text("Enter Username"),
+                icons: Image(image: AssetImage(AppImages.at)),
+                keyboardtypee: TextInputType.name,
+              ),
+              Gap(height * 0.026),
+              Textfield0(
+                controller: adressController,
+                labeltext: Text("Enter Adress"),
+                icons: Icon(
+                  CupertinoIcons.house_alt,
+                  size: 30,
+                  color: AppColours.iconcolours,
+                ),
+                keyboardtypee: TextInputType.number,
+              ),
+              Gap(height * 0.026),
+              Textfield0(
+                controller: dobController,
+                labeltext: Text("Enter DOB-Ex 09/10/2000"),
+                icons: Icon(
+                  Icons.calendar_month,
+                  size: 38,
+                  color: AppColours.iconcolours,
+                ),
+                keyboardtypee: TextInputType.datetime,
+              ),
+
               Gap(height * 0.04),
+              Image(image: AssetImage(AppImages.or)),
+              Gap(height * 0.03),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,24 +151,25 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ],
               ),
-              Gap(height * 0.04),
+              Gap(height * 0.01),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Don't have an account?",
+                    "Already have an account?",
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                   Textbutton0(
-                    text: "Signup",
+                    text: "LogIn",
                     onPressed: () {
-                      Get.toNamed(AppRoutes.signup);
+                      Get.toNamed(AppRoutes.login);
                     },
                     textcolor: Colors.amber,
                   ),
                 ],
               ),
+              Gap(10),
             ],
           ),
         ),

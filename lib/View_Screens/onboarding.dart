@@ -65,6 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
               },
               text: 'Login',
             ),
+
             Gap(h * .06),
           ],
         ),
