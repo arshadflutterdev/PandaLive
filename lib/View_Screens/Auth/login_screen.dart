@@ -82,7 +82,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   alignment: Alignment.topLeft,
                   child: Textbutton0(
                     text: 'Forget Password ?',
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.forgetp);
+                    },
                     textcolor: Colors.amber,
                   ),
                 ),
