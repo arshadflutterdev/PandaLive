@@ -169,7 +169,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                   bgColour: Colors.amber,
                   onPressed: () {
-                    Get.toNamed(AppRoutes.login);
+                    Get.toNamed(AppRoutes.foundermsg);
                   },
                   text: 'Login',
                 ),
@@ -183,11 +183,15 @@ class _SignupScreenState extends State<SignupScreen> {
                   children: [
                     Iconbutton0(
                       image: Image.asset(AppImages.google),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.foundermsg);
+                      },
                     ),
                     Iconbutton0(
                       image: Image.asset(AppImages.facebook),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.foundermsg);
+                      },
                     ),
                   ],
                 ),
@@ -203,7 +207,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Textbutton0(
                       text: "LogIn",
                       onPressed: () {
-                        Get.toNamed(AppRoutes.login);
+                        Get.toNamed(AppRoutes.foundermsg);
                       },
                       textcolor: Colors.amber,
                     ),

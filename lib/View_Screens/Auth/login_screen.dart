@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   bgColour: Colors.amber,
                   onPressed: () {
-                    Get.toNamed(AppRoutes.login);
+                    Get.toNamed(AppRoutes.foundermsg);
                   },
                   text: 'Login',
                 ),
@@ -108,11 +108,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Iconbutton0(
                       image: Image.asset(AppImages.google),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.foundermsg);
+                      },
                     ),
                     Iconbutton0(
                       image: Image.asset(AppImages.facebook),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.foundermsg);
+                      },
                     ),
                   ],
                 ),
