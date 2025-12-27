@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/constant.dart';
 import 'package:pandalive/Widgets/Buttons/elevatedbutton0.dart';
 
@@ -48,6 +49,7 @@ class _OtpScreenState extends State<OtpScreen> {
       timer?.cancel(); // stop timer
       print("OTP Verified: $otp");
       // Navigate to next screen here
+      Get.toNamed(AppRoutes.newpassword);
     }
   }
 
@@ -146,6 +148,7 @@ class _OtpScreenState extends State<OtpScreen> {
               h: height * 0.07,
               bgColour: Colors.amber,
               onPressed: () {
+                verifyOtp();
                 String otp = controllers.map((c) => c.text).join();
                 print("Entered OTP: $otp");
               },

@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
           leading: Iconbutton0(
             image: Icon(Icons.arrow_back_ios_new, color: Colors.white),
             onPressed: () {
-              Get.back();
+              Get.toNamed(AppRoutes.splash);
             },
           ),
         ),
