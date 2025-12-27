@@ -4,8 +4,9 @@ import 'package:pandalive/View_Screens/Auth/login_screen.dart';
 import 'package:pandalive/View_Screens/Auth/otp_screen.dart';
 import 'package:pandalive/View_Screens/Auth/setnew_password.dart';
 import 'package:pandalive/View_Screens/Auth/signup_screen.dart';
-import 'package:pandalive/View_Screens/founder_message.dart';
-import 'package:pandalive/View_Screens/onboarding.dart';
+import 'package:pandalive/View_Screens/Ui_Screens/founder_message.dart';
+import 'package:pandalive/View_Screens/Ui_Screens/onboarding.dart';
+import 'package:pandalive/View_Screens/bottomnav_bar.dart';
 
 class AppRoutes {
   static const splash = '/';
@@ -15,6 +16,7 @@ class AppRoutes {
   static const otp = "/OtpScreen";
   static const newpassword = "/SetnewPassword";
   static const foundermsg = "/FounderMessage";
+  static const bottomnav = "/BottomnavBar";
   static final routes = [
     GetPage(name: splash, page: () => SplashScreen()),
     GetPage(name: login, page: () => LoginScreen()),
@@ -23,5 +25,6 @@ class AppRoutes {
     GetPage(name: otp, page: () => OtpScreen()),
     GetPage(name: newpassword, page: () => SetnewPassword()),
     GetPage(name: foundermsg, page: () => FounderMessage()),
+    GetPage(name: bottomnav, page: () => BottomnavBar()),
   ];
 }
