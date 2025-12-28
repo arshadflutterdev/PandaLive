@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/View_Screens/BottomTabs/explore_screen.dart';
