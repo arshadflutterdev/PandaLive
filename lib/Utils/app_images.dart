@@ -13,6 +13,7 @@ class AppImages {
   static const String calendar = "assets/Icons/Calendar.png";
   static const String location = "assets/Icons/Location.png";
   static const String profile = "assets/Icons/Profile.png";
+  static const String email = "assets/Icons/email.png";
   //icons for navbar
   static const String explore = "assets/Icons/explore.png";
   static const String golive = "assets/Icons/golive.png";

@@ -39,9 +39,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Gap(height * 0.05),
+              Image(image: AssetImage(AppImages.email)),
+              Gap(height * 0.05),
               Text(
                 "Forget Password?",
                 style: AppStyle.logoText.copyWith(fontSize: 30),

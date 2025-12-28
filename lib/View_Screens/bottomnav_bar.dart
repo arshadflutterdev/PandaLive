@@ -16,7 +16,7 @@ class BottomnavBar extends StatefulWidget {
 
 class _BottomnavBarState extends State<BottomnavBar> {
   List<Widget> screenlist = [ExploreScreen(), GoLiveScreen(), ProfileScreen()];
-  int currentIndex = 1;
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

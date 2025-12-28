@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:pandalive/Routes/app_routes.dart';
+import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
 import 'package:pandalive/Widgets/Buttons/elevatedbutton0.dart';
@@ -40,10 +41,16 @@ class _SetnewPasswordState extends State<SetnewPassword> {
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Arshad!", style: AppStyle.logoText.copyWith(fontSize: 30)),
+              Gap(height * 0.090),
+              Text(
+                "Arshad!",
+                style: AppStyle.logoText.copyWith(
+                  fontSize: 30,
+                  color: AppColours.iconcolours,
+                ),
+              ),
               Gap(height * 0.02),
 
               Center(
@@ -61,14 +68,24 @@ class _SetnewPasswordState extends State<SetnewPassword> {
               Gap(height * 0.03),
               Textfield0(
                 controller: passwordController,
-                labeltext: Text("Enter Password"),
+                labeltext: Text("New Password"),
                 keyboardtypee: TextInputType.emailAddress,
               ),
-              Gap(height * 0.01),
+              Gap(3),
+              Text(
+                "Must be atleast 6 characters",
+                style: TextStyle(color: AppColours.iconcolours),
+              ),
+              Gap(height * 0.015),
               Textfield0(
                 controller: confrimPassword,
                 labeltext: Text("Confirm Password"),
                 keyboardtypee: TextInputType.emailAddress,
+              ),
+              Gap(3),
+              Text(
+                "Both password Must match",
+                style: TextStyle(color: AppColours.iconcolours),
               ),
               Gap(height * 0.04),
               Elevatedbutton0(
@@ -89,6 +106,5 @@ class _SetnewPasswordState extends State<SetnewPassword> {
         return false;
       },
     );
-    ;
   }
 }

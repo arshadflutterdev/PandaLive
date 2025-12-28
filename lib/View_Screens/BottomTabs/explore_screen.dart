@@ -10,6 +10,11 @@ class ExploreScreen extends StatefulWidget {
 class _ExploreScreenState extends State<ExploreScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text("Explore")));
+    return WillPopScope(
+      child: Scaffold(appBar: AppBar(title: Text("Explorer"))),
+      onWillPop: () async {
+        return false;
+      },
+    );
   }
 }
