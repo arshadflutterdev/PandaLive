@@ -17,4 +17,11 @@ class AppImages {
   //icons for navbar
   static const String explore = "assets/Icons/explore.png";
   static const String golive = "assets/Icons/golive.png";
+  //live streamer images
+  static const String girl1 = "assets/images/girl1.jpg";
+  static const String girl2 = "assets/images/girls2.jpg";
+  static const String girl3 = "assets/images/girl3.jpg";
+  static const String boy1 = "assets/images/boy1.jpg";
+  static const String boy2 = "assets/images/boy2.jpg";
+  static const String boy3 = "assets/images/boy3.jpg";
 }
