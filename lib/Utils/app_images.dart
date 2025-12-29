@@ -14,6 +14,7 @@ class AppImages {
   static const String location = "assets/Icons/Location.png";
   static const String profile = "assets/Icons/Profile.png";
   static const String email = "assets/Icons/email.png";
+  static const String share = "assets/Icons/share.png";
   //icons for navbar
   static const String explore = "assets/Icons/explore.png";
   static const String golive = "assets/Icons/golive.png";
@@ -24,4 +25,5 @@ class AppImages {
   static const String boy1 = "assets/images/boy1.jpg";
   static const String boy2 = "assets/images/boy2.jpg";
   static const String boy3 = "assets/images/boy3.jpg";
+  static const String close = "assets/Icons/close.png";
 }

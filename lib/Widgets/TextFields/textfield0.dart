@@ -23,12 +23,14 @@ class Textfield0 extends StatelessWidget {
     return TextField(
       keyboardType: keyboardtypee,
       controller: controller,
+
       minLines: 1,
       maxLines: 10,
       cursorColor: Colors.white,
       style: TextStyle(color: Colors.white, fontSize: 16, letterSpacing: 1),
       decoration: InputDecoration(
         label: labeltext,
+
         labelStyle: AppStyle.buttext.copyWith(
           color: Colors.white,
           fontSize: 18,
