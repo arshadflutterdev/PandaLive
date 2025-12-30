@@ -15,6 +15,7 @@ class AppImages {
   static const String profile = "assets/Icons/Profile.png";
   static const String email = "assets/Icons/email.png";
   static const String share = "assets/Icons/share.png";
+  static const String liveIcon = "assets/Icons/GoLive .png";
   //icons for navbar
   static const String explore = "assets/Icons/explore.png";
   static const String golive = "assets/Icons/golive.png";
