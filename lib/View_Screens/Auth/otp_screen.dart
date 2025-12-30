@@ -38,6 +38,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   Timer? timer;
   RxInt remainingsc = 120.obs;
+  @override
   void initState() {
     super.initState();
     startTimer();
@@ -72,6 +73,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("yes ui is building everytime");
     double height = HeightWidth.screenHeight(context);
     double width = HeightWidth.screenWidth(context);
     return Scaffold(

@@ -54,8 +54,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   itemBuilder: (context, index) {
                     final item = explorerController.items[index];
                     return Shimmer.fromColors(
-                      baseColor: Colors.transparent,
-                      highlightColor: Colors.white,
+                      baseColor: Colors.grey[900]!,
+                      highlightColor: Colors.grey[700]!,
                       child: Padding(
                         padding: const EdgeInsets.only(
                           left: 2,
