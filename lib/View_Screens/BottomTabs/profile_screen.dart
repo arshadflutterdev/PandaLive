@@ -1,4 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:pandalive/Utils/app_colours.dart';
+import 'package:pandalive/Utils/app_images.dart';
+import 'package:pandalive/Utils/app_style.dart';
+import 'package:pandalive/Utils/constant.dart';
+import 'package:pandalive/Widgets/Buttons/icontbutton0.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -7,9 +15,148 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends State<ProfileScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController tabController;
+  RxBool isSelected = false.obs;
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 3, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text("Profile")));
+    final double height = HeightWidth.screenHeight(context);
+    final double width = HeightWidth.screenWidth(context);
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Gap(height * 0.05),
+          CircleAvatar(radius: 65, backgroundImage: AssetImage(AppImages.boy2)),
+          Gap(height * 0.010),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text("Mr.Rohit", style: AppStyle.logoText.copyWith(fontSize: 20)),
+              Iconbutton0(
+                image: Icon(Icons.edit_outlined, color: Colors.white),
+                onPressed: () {},
+              ),
+            ],
+          ),
+          Text(
+            "Smile often, laugh even louder",
+            style: AppStyle.buttext.copyWith(
+              color: AppColours.iconcolours,
+              fontSize: 12,
+            ),
+          ),
+          Gap(height * 0.025),
+          TabBar(
+            indicatorPadding: EdgeInsets.symmetric(horizontal: 2),
+            indicatorSize: TabBarIndicatorSize.tab,
+            dividerColor: Colors.black,
+            indicatorColor: Colors.white,
+            controller: tabController,
+            tabs: [
+              Column(
+                children: [
+                  Image(
+                    height: height * 0.05,
+
+                    color: Colors.white,
+                    image: AssetImage(AppImages.followers),
+                  ),
+                  Gap(5),
+                  Text(
+                    "210",
+                    style: AppStyle.buttext.copyWith(color: Colors.grey),
+                  ),
+                  Text(
+                    "Followers",
+                    style: AppStyle.buttext.copyWith(
+                      color: AppColours.iconcolours,
+                      fontSize: 17,
+                    ),
+                  ),
+                ],
+              ),
+
+              Column(
+                children: [
+                  Image(
+                    height: height * 0.05,
+
+                    color: Colors.white,
+                    image: AssetImage(AppImages.following),
+                  ),
+                  Gap(5),
+                  Text(
+                    "02",
+                    style: AppStyle.buttext.copyWith(color: Colors.grey),
+                  ),
+                  Text(
+                    "Following",
+                    style: AppStyle.buttext.copyWith(
+                      color: AppColours.iconcolours,
+                      fontSize: 17,
+                    ),
+                  ),
+                ],
+              ),
+
+              Column(
+                children: [
+                  Image(
+                    height: height * 0.05,
+
+                    // color: Colors.white,
+                    image: AssetImage(AppImages.coins),
+                  ),
+                  Gap(5),
+                  Text(
+                    "0",
+                    style: AppStyle.buttext.copyWith(color: Colors.grey),
+                  ),
+                  Text(
+                    "Coins",
+                    style: AppStyle.buttext.copyWith(
+                      color: AppColours.iconcolours,
+                      fontSize: 17,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: tabController,
+              children: [
+                Center(
+                  child: Text(
+                    "Followers",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    "Following",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                Center(
+                  child: Text("Coins", style: TextStyle(color: Colors.white)),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

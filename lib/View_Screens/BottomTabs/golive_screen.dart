@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_images.dart';
+import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
 import 'package:pandalive/Widgets/Buttons/icontbutton0.dart';
 
@@ -30,9 +33,10 @@ class _GoLiveScreenState extends State<GoLiveScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Gap(50),
             Container(
-              height: 200, // increase size
-              width: 200,
+              height: 150, // increase size
+              width: 150,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: AppColours.iconcolours, width: 4),
@@ -40,11 +44,13 @@ class _GoLiveScreenState extends State<GoLiveScreen> {
               child: Center(
                 child: Image.asset(
                   AppImages.liveIcon,
-                  height: 120, // icon ke liye size
-                  width: 120,
+                  height: 140, // icon ke liye size
+                  width: 140,
                 ),
               ),
             ),
+            Gap(10),
+            Text("Go Live Now", style: AppStyle.logoText),
           ],
         ),
       ),

@@ -16,6 +16,9 @@ class AppImages {
   static const String email = "assets/Icons/email.png";
   static const String share = "assets/Icons/share.png";
   static const String liveIcon = "assets/Icons/GoLive .png";
+  static const String followers = "assets/Icons/follow-us.png";
+  static const String following = "assets/Icons/following.png";
+  static const String coins = "assets/Icons/coin.png";
   //icons for navbar
   static const String explore = "assets/Icons/explore.png";
   static const String golive = "assets/Icons/golive.png";
