@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
-import 'package:pandalive/Widgets/Buttons/elevatedbutton0.dart';
 import 'package:pandalive/Widgets/Buttons/icontbutton0.dart';
 import 'package:pandalive/Widgets/TextFields/textfield0.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WatchStream extends StatefulWidget {
   const WatchStream({super.key});
@@ -18,9 +17,37 @@ class WatchStream extends StatefulWidget {
 }
 
 class _WatchStreamState extends State<WatchStream> {
+  RxList<String> msgsList = <String>[].obs;
   TextEditingController messageController = TextEditingController();
+  ScrollController scrollController = ScrollController();
   //function to store message in sharedprefrence
-  Future<void> message() async {}
+  //message store to sharedprefrence
+  Future<void> message() async {
+    SharedPreferences prf = await SharedPreferences.getInstance();
+    final List<String> msgList = prf.getStringList("comments") ?? [];
+    final text = messageController.text.trim();
+    if (text.isEmpty) {
+      return;
+    }
+
+    msgList.add(text);
+    await prf.setStringList("comments", msgList);
+    messageController.clear();
+  }
+
+  //below i will get data prf
+
+  Future<void> getMessage() async {
+    SharedPreferences prfs = await SharedPreferences.getInstance();
+    List<String> msgList = prfs.getStringList("comments") ?? [];
+    msgsList.assignAll(msgList);
+  }
+
+  void initState() {
+    super.initState();
+    getMessage();
+  }
+
   @override
   Widget build(BuildContext context) {
     final double height = HeightWidth.screenHeight(context);
@@ -31,7 +58,11 @@ class _WatchStreamState extends State<WatchStream> {
     final image = arg["image"];
     final country = arg["country"];
     final hashtag = arg["hashtag"];
+
     return Scaffold(
+      // appBar: AppBar(
+      //   title: Text(msgs, style: TextStyle(color: Colors.black)),
+      // ),
       body: Container(
         height: height,
         width: width,
@@ -76,7 +107,7 @@ class _WatchStreamState extends State<WatchStream> {
                             ),
 
                             Text(
-                              hashtag,
+                              "#$hashtag",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -145,7 +176,10 @@ class _WatchStreamState extends State<WatchStream> {
                 controller: messageController,
                 suffixx: Iconbutton0(
                   image: Icon(Icons.send, color: Colors.white, size: 39),
-                  onPressed: () {},
+                  onPressed: () async {
+                    await message();
+                    await getMessage();
+                  },
                 ),
                 labeltext: Text("Say something"),
                 keyboardtypee: TextInputType.text,
@@ -161,7 +195,79 @@ class _WatchStreamState extends State<WatchStream> {
                   padding: const EdgeInsets.only(right: 15),
                   child: Iconbutton0(
                     image: Image(image: AssetImage(AppImages.share)),
-                    onPressed: () {},
+                    onPressed: () async {
+                      // await getMessage();
+                    },
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: height * 0.10,
+              left: 0,
+              right: width * 0.25,
+              child: Container(
+                height: height * 0.30,
+                // width: 100,
+                color: Colors.transparent,
+                child: Obx(
+                  () => ListView.builder(
+                    controller: scrollController,
+                    itemCount: msgsList.length,
+                    reverse: true,
+                    itemBuilder: (context, index) {
+                      final cmt = msgsList[msgsList.length - 1 - index];
+                      return Padding(
+                        padding: EdgeInsets.only(left: 18),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Card(
+                            color: Colors.black.withOpacity(0.5),
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  CircleAvatar(
+                                    backgroundImage: AssetImage(image),
+                                    radius: 15,
+                                  ),
+                                  Gap(5),
+                                  Text(
+                                    name,
+                                    style: AppStyle.logoText.copyWith(
+                                      fontSize: 18,
+                                      color: Colors.amber.shade100.withOpacity(
+                                        0.50,
+                                      ),
+                                    ),
+                                  ),
+                                  Gap(2),
+                                  Text(
+                                    ":",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  Gap(2),
+                                  Expanded(
+                                    child: Text(
+                                      cmt.toString(),
+                                      style: AppStyle.buttext.copyWith(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                      ),
+                                      softWrap: true,
+                                      overflow: TextOverflow.visible,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),

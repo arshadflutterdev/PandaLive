@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -6,6 +8,7 @@ import 'package:pandalive/Controllers/explorer_controller.dart';
 import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
@@ -15,7 +18,16 @@ class ExploreScreen extends StatefulWidget {
 }
 
 class _ExploreScreenState extends State<ExploreScreen> {
+  RxBool isloading = true.obs;
   ExplorerController explorerController = ExplorerController();
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3), () {
+      isloading.value = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = HeightWidth.screenHeight(context);
@@ -30,117 +42,269 @@ class _ExploreScreenState extends State<ExploreScreen> {
           ),
           backgroundColor: Colors.black,
         ),
-        body: GridView.builder(
-          shrinkWrap: true,
-          itemCount: explorerController.items.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 0.97, // height vs width control
-          ),
-          itemBuilder: (context, index) {
-            final item = explorerController.items[index];
-            return Padding(
-              padding: const EdgeInsets.only(left: 2, right: 2, bottom: 2),
-              child: GestureDetector(
-                onTap: () {
-                  Get.toNamed(
-                    AppRoutes.watchstream,
-                    arguments: {
-                      "name": item.name,
-                      "view": item.view,
-                      "image": item.images,
-                      "country": item.country,
-                      "hashtag": item.hashtag,
-                    },
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
+        body: Obx(
+          () => isloading.value
+              ? GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: explorerController.items.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.97, // height vs width control
                   ),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: height * 0.16,
-                        width: width,
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage(item.images),
-                          ),
+                  itemBuilder: (context, index) {
+                    final item = explorerController.items[index];
+                    return Shimmer.fromColors(
+                      baseColor: Colors.grey.shade800,
+                      highlightColor: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 2,
+                          right: 2,
+                          bottom: 2,
                         ),
-                        child: Column(
-                          children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Container(
-                                  height: 20,
-                                  padding: EdgeInsets.symmetric(horizontal: 2),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(
+                              AppRoutes.watchstream,
+                              arguments: {
+                                "name": item.name,
+                                "view": item.view,
+                                "image": item.images,
+                                "country": item.country,
+                                "hashtag": item.hashtag,
+                              },
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(8),
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: height * 0.16,
+                                  width: width,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(2),
-                                    color: Colors.black.withOpacity(0.5),
+                                    color: Colors.red,
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(item.images),
+                                    ),
                                   ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                  child: Column(
                                     children: [
-                                      Gap(1),
-                                      Icon(
-                                        CupertinoIcons.eye,
-                                        size: 18,
-                                        color: Colors.white,
+                                      Align(
+                                        alignment: Alignment.topRight,
+                                        child: Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Container(
+                                            height: 20,
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 2,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(2),
+                                              color: Colors.black.withOpacity(
+                                                0.5,
+                                              ),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Gap(1),
+                                                Icon(
+                                                  CupertinoIcons.eye,
+                                                  size: 18,
+                                                  color: Colors.white,
+                                                ),
+                                                Gap(1.5),
+                                                Text(
+                                                  item.view,
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                Gap(1),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                      Gap(1.5),
-                                      Text(
-                                        item.view,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      Gap(1),
                                     ],
                                   ),
                                 ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.white,
-                              radius: 18,
-                              backgroundImage: AssetImage(item.images),
-                            ),
-                            Gap(5),
-                            Column(
-                              children: [
-                                Text(
-                                  item.name,
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                Text(
-                                  item.country,
-                                  style: TextStyle(color: Colors.amber),
+                                Padding(
+                                  padding: const EdgeInsets.all(6.0),
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundColor: Colors.white,
+                                        radius: 18,
+                                        backgroundImage: AssetImage(
+                                          item.images,
+                                        ),
+                                      ),
+                                      Gap(5),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            item.name,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            item.country,
+                                            style: TextStyle(
+                                              color: Colors.amber,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
-                    ],
+                    );
+                  },
+                )
+              : GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: explorerController.items.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.97, // height vs width control
                   ),
+                  itemBuilder: (context, index) {
+                    final item = explorerController.items[index];
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                        left: 2,
+                        right: 2,
+                        bottom: 2,
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed(
+                            AppRoutes.watchstream,
+                            arguments: {
+                              "name": item.name,
+                              "view": item.view,
+                              "image": item.images,
+                              "country": item.country,
+                              "hashtag": item.hashtag,
+                            },
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: height * 0.16,
+                                width: width,
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(item.images),
+                                  ),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.topRight,
+                                      child: Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Container(
+                                          height: 20,
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 2,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              2,
+                                            ),
+                                            color: Colors.black.withOpacity(
+                                              0.5,
+                                            ),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Gap(1),
+                                              Icon(
+                                                CupertinoIcons.eye,
+                                                size: 18,
+                                                color: Colors.white,
+                                              ),
+                                              Gap(1.5),
+                                              Text(
+                                                item.view,
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              Gap(1),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(6.0),
+                                child: Row(
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundColor: Colors.white,
+                                      radius: 18,
+                                      backgroundImage: AssetImage(item.images),
+                                    ),
+                                    Gap(5),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          item.name,
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        Text(
+                                          item.country,
+                                          style: TextStyle(color: Colors.amber),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
-              ),
-            );
-          },
         ),
       ),
       onWillPop: () async {
