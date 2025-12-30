@@ -26,4 +26,6 @@ class AppImages {
   static const String boy2 = "assets/images/boy2.jpg";
   static const String boy3 = "assets/images/boy3.jpg";
   static const String close = "assets/Icons/close.png";
+  //here is image for live bg
+  static const String livebg = "assets/images/bglive.png";
 }
