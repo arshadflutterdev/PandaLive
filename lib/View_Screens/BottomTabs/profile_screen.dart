@@ -6,7 +6,9 @@ import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
+import 'package:pandalive/Widgets/Buttons/elevatedbutton0.dart';
 import 'package:pandalive/Widgets/Buttons/icontbutton0.dart';
+import 'package:pandalive/Widgets/TextFields/textfield0.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -137,20 +139,231 @@ class _ProfileScreenState extends State<ProfileScreen>
             child: TabBarView(
               controller: tabController,
               children: [
-                Center(
-                  child: Text(
-                    "Followers",
-                    style: TextStyle(color: Colors.white),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Gap(10),
+                      Textfield0(
+                        icons: Icon(
+                          Icons.search,
+                          color: AppColours.iconcolours,
+                        ),
+                        labeltext: Text("Search Followers"),
+                        keyboardtypee: TextInputType.text,
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            return Card(
+                              color: AppColours.textfieldC,
+                              child: ListTile(
+                                title: Text(
+                                  "Mr Rohit",
+                                  style: AppStyle.buttext.copyWith(
+                                    color: AppColours.iconcolours,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  "Pakistan",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                leading: CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage(AppImages.boy2),
+                                ),
+                                trailing: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.amber,
+                                    shape: ContinuousRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                  child: Text(
+                                    "Remove",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Center(
-                  child: Text(
-                    "Following",
-                    style: TextStyle(color: Colors.white),
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Gap(10),
+                      Textfield0(
+                        icons: Icon(
+                          Icons.search,
+                          color: AppColours.iconcolours,
+                        ),
+                        labeltext: Text("Search Followings"),
+                        keyboardtypee: TextInputType.text,
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            return Card(
+                              color: AppColours.textfieldC,
+                              child: ListTile(
+                                title: Text(
+                                  "Mr Rohit",
+                                  style: AppStyle.buttext.copyWith(
+                                    color: AppColours.iconcolours,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  "USA",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                leading: CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage(AppImages.boy2),
+                                ),
+                                trailing: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.amber,
+                                    shape: ContinuousRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                  child: Text(
+                                    "UnFollow",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Center(
-                  child: Text("Coins", style: TextStyle(color: Colors.white)),
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(AppImages.coinbg),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Spacer(),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Total Available Coins",
+                                  style: AppStyle.buttext.copyWith(
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                Text("546547", style: AppStyle.buttext),
+                              ],
+                            ),
+                            Spacer(),
+                            Image(image: AssetImage(AppImages.coins)),
+                          ],
+                        ),
+                      ),
+                      Gap(10),
+                      Container(
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(AppImages.coinbg),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Spacer(),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Last Received Coins",
+                                  style: AppStyle.buttext.copyWith(
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                Text("546", style: AppStyle.buttext),
+                              ],
+                            ),
+                            Spacer(),
+                            Image(image: AssetImage(AppImages.coins)),
+                          ],
+                        ),
+                      ),
+                      Gap(10),
+                      Container(
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(AppImages.coinbg),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Spacer(),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Total \$ value",
+                                  style: AppStyle.buttext.copyWith(
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                Text("\$510.02", style: AppStyle.buttext),
+                              ],
+                            ),
+                            Spacer(),
+                            Image(image: AssetImage(AppImages.coins)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
