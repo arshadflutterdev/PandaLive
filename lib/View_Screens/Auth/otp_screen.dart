@@ -37,7 +37,7 @@ class _OtpScreenState extends State<OtpScreen> {
   }
 
   Timer? timer;
-  int remainingsc = 120;
+  RxInt remainingsc = 120.obs;
   void initState() {
     super.initState();
     startTimer();
@@ -55,13 +55,12 @@ class _OtpScreenState extends State<OtpScreen> {
 
   void startTimer() {
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if (remainingsc == 0) {
+      if (remainingsc.value == 0) {
         timer.cancel();
         Get.back();
       }
-      setState(() {
-        remainingsc--;
-      });
+
+      remainingsc.value--;
     });
   }
 
@@ -96,9 +95,11 @@ class _OtpScreenState extends State<OtpScreen> {
               style: TextStyle(color: Colors.white70),
             ),
             Gap(10),
-            Text(
-              "Time remaining: $timerText",
-              style: const TextStyle(color: Colors.redAccent, fontSize: 16),
+            Obx(
+              () => Text(
+                "Time remaining: $timerText",
+                style: const TextStyle(color: Colors.redAccent, fontSize: 16),
+              ),
             ),
             const SizedBox(height: 30),
 
