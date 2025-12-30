@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/Utils/app_style.dart';
@@ -361,6 +362,16 @@ class _ProfileScreenState extends State<ProfileScreen>
                             Image(image: AssetImage(AppImages.coins)),
                           ],
                         ),
+                      ),
+                      Gap(height * 0.010),
+                      Elevatedbutton0(
+                        w: double.infinity,
+                        h: 30,
+                        bgColour: AppColours.iconcolours,
+                        onPressed: () {
+                          Get.toNamed(AppRoutes.wallet);
+                        },
+                        text: "Radeem Now",
                       ),
                     ],
                   ),
