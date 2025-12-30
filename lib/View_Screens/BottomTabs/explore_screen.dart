@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:pandalive/Controllers/explorer_controller.dart';
 import 'package:pandalive/Routes/app_routes.dart';
+import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
 import 'package:shimmer/shimmer.dart';
@@ -77,7 +78,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Colors.black,
+                              color: Colors.grey[850],
                               borderRadius: BorderRadius.all(
                                 Radius.circular(8),
                               ),
@@ -88,7 +89,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                   height: height * 0.16,
                                   width: width,
                                   decoration: BoxDecoration(
-                                    color: Colors.red,
+                                    color: Colors.grey[800],
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: AssetImage(item.images),
@@ -211,6 +212,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.black,
+                            border: Border.all(color: AppColours.iconcolours),
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                           ),
                           child: Column(

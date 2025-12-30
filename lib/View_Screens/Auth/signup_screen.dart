@@ -174,7 +174,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   onPressed: () {
                     Get.toNamed(AppRoutes.foundermsg);
                   },
-                  text: 'Login',
+                  text: 'Create Account',
                 ),
                 Gap(height * 0.028),
 
