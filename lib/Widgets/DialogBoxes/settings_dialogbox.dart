@@ -6,7 +6,7 @@ import 'package:pandalive/Utils/constant.dart';
 
 class SettingsDialogbox extends StatelessWidget {
   final List items;
-  final VoidCallback onPressed;
+  final Function(int index) onPressed;
   const SettingsDialogbox({
     super.key,
     required this.items,
@@ -34,7 +34,9 @@ class SettingsDialogbox extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
               child: GestureDetector(
-                onTap: onPressed,
+                onTap: () {
+                  onPressed(index);
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,

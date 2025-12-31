@@ -4,6 +4,10 @@ import 'package:pandalive/View_Screens/Auth/login_screen.dart';
 import 'package:pandalive/View_Screens/Auth/otp_screen.dart';
 import 'package:pandalive/View_Screens/Auth/setnew_password.dart';
 import 'package:pandalive/View_Screens/Auth/signup_screen.dart';
+import 'package:pandalive/View_Screens/SettingScreens/about_us.dart';
+import 'package:pandalive/View_Screens/SettingScreens/payout_history.dart';
+import 'package:pandalive/View_Screens/SettingScreens/privacy_policy.dart';
+import 'package:pandalive/View_Screens/SettingScreens/transaction_history.dart';
 import 'package:pandalive/View_Screens/Ui_Screens/Streaming_Screens/your_stream.dart';
 import 'package:pandalive/View_Screens/Ui_Screens/Withdraw_Screens/add_wallet.dart';
 import 'package:pandalive/View_Screens/Ui_Screens/founder_message.dart';
@@ -23,6 +27,10 @@ class AppRoutes {
   static const watchstream = "/WatchStream";
   static const wallet = "/AddWallet";
   static const yourstream = "/YourStream";
+  static const payout = "/PayoutHistory";
+  static const transaction = "/TransactionHistory";
+  static const privacy = "/PrivacyPolicy";
+  static const aboutus = "/AboutUs";
   static final routes = [
     GetPage(name: splash, page: () => SplashScreen()),
     GetPage(name: login, page: () => LoginScreen()),
@@ -35,5 +43,9 @@ class AppRoutes {
     GetPage(name: watchstream, page: () => WatchStream()),
     GetPage(name: wallet, page: () => AddWallet()),
     GetPage(name: yourstream, page: () => YourStream()),
+    GetPage(name: payout, page: () => PayoutHistory()),
+    GetPage(name: transaction, page: () => TransactionHistory()),
+    GetPage(name: privacy, page: () => PrivacyPolicy()),
+    GetPage(name: aboutus, page: () => AboutUs()),
   ];
 }

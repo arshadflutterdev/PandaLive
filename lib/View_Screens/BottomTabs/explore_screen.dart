@@ -24,6 +24,7 @@ class ExploreScreen extends StatefulWidget {
 class _ExploreScreenState extends State<ExploreScreen> {
   RxBool isloading = true.obs;
   ExplorerController explorerController = ExplorerController();
+  int currentIndex = 0;
   @override
   void initState() {
     super.initState();
@@ -55,7 +56,21 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   context: context,
                   builder: (context) => SettingsDialogbox(
                     items: settingsController.items,
-                    onPressed: () {},
+                    onPressed: (index) {
+                      currentIndex = index;
+
+                      if (currentIndex == 0) {
+                        Get.toNamed(AppRoutes.payout);
+                      } else if (currentIndex == 1) {
+                        Get.toNamed(AppRoutes.transaction);
+                      } else if (currentIndex == 2) {
+                        Get.toNamed(AppRoutes.privacy);
+                      } else if (currentIndex == 3) {
+                        Get.toNamed(AppRoutes.aboutus);
+                      } else if (currentIndex == 4) {
+                        Get.snackbar("Logout", "You are Logged Out now");
+                      }
+                    },
                   ),
                 );
               },
