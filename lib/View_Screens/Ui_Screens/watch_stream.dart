@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:pandalive/Controllers/settings_controller.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';

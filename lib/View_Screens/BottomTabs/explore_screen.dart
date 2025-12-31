@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:pandalive/Controllers/explorer_controller.dart';
+import 'package:pandalive/Controllers/settings_controller.dart';
 import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_style.dart';
@@ -29,6 +30,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
       isloading.value = false;
     });
   }
+
+  SettingsController settingsController = SettingsController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +59,43 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         height: height * 0.40,
                         width: width,
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.9),
+                          color: Colors.black87,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Column(children: [
+                        child: ListView.builder(
+                          itemCount: settingsController.items.length,
+                          itemBuilder: (context, index) {
+                            final settigs = settingsController.items[index];
+                            print("here is setting data ${settigs.text}");
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 5,
+                                vertical: 10,
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Gap(5),
+                                  Image(
+                                    color: Colors.white,
 
-                          ],
+                                    image: AssetImage(settigs.image),
+                                  ),
+                                  Gap(15),
+                                  Expanded(
+                                    child: Text(
+                                      settigs.text,
+                                      style: AppStyle.buttext.copyWith(
+                                        color: Colors.white,
+                                        fontSize: 19,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
                         ),
                       ),
                     );
