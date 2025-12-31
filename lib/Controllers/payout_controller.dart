@@ -8,7 +8,7 @@ class PayoutController extends GetxController {
       status: "Requested",
       image: "assets/images/boy1.jpg",
       name: "James",
-      datetime: "01-02-2026 : 8:24:40",
+      datetime: "01-02-2026 8:24:40",
     ),
     PayoutModel(
       dollars: "50\$",
