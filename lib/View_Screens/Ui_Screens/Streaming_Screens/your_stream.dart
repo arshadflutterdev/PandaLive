@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
+import 'package:pandalive/Widgets/Buttons/elevatedbutton0.dart';
 import 'package:pandalive/Widgets/Buttons/icontbutton0.dart';
 import 'package:pandalive/Widgets/Buttons/textbutton0.dart';
 
@@ -129,30 +131,96 @@ class _YourStreamState extends State<YourStream> {
                             child: AlertDialog(
                               backgroundColor: Colors.transparent,
                               content: Container(
-                                height: height * 0.30,
+                                height: height * 0.25,
                                 width: width,
-                                color: Colors.black.withOpacity(0.5),
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.5),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                                 child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
                                       "Are You Sure?",
-                                      style: AppStyle.logoText,
+                                      style: AppStyle.logoText.copyWith(
+                                        fontSize: 20,
+                                      ),
                                     ),
                                     Text(
                                       "This will end your stream",
-                                      style: AppStyle.buttext,
+                                      style: AppStyle.buttext.copyWith(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                      ),
                                     ),
-                                    Row(
-                                      children: [
-                                        Textbutton0(
-                                          text: "Cancel",
-                                          onPressed: () {},
-                                        ),
-                                        Textbutton0(
-                                          text: "Cancel",
-                                          onPressed: () {},
-                                        ),
-                                      ],
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                        vertical: 5,
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              fixedSize: Size(width * 0.40, 30),
+                                              textStyle: TextStyle(
+                                                color: Colors.black,
+                                              ),
+                                              backgroundColor: Colors.white,
+                                              shape: ContinuousRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Get.back();
+                                            },
+                                            child: Text(
+                                              "Not Now",
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ),
+
+                                          Gap(5),
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              fixedSize: Size(width * 0.40, 30),
+                                              textStyle: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                              backgroundColor: Colors.black
+                                                  .withOpacity(0.8),
+                                              shape: ContinuousRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Get.offAllNamed(
+                                                AppRoutes.bottomnav,
+                                              );
+                                              Get.snackbar(
+                                                "You Stream For",
+                                                "02:20 mins",
+                                                backgroundColor: Colors.white,
+                                              );
+                                            },
+                                            child: Text(
+                                              "End Stream",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),

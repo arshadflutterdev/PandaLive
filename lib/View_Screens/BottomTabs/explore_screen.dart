@@ -9,6 +9,7 @@ import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
+import 'package:pandalive/Widgets/Buttons/icontbutton0.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ExploreScreen extends StatefulWidget {
@@ -42,6 +43,33 @@ class _ExploreScreenState extends State<ExploreScreen> {
             style: AppStyle.logoText.copyWith(fontSize: 26),
           ),
           backgroundColor: Colors.black,
+          actions: [
+            Iconbutton0(
+              image: Icon(Icons.settings, color: AppColours.iconcolours),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      backgroundColor: Colors.transparent,
+                      content: Container(
+                        height: height * 0.40,
+                        width: width,
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.9),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(children: [
+
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ],
         ),
         body: Obx(
           () => isloading.value
