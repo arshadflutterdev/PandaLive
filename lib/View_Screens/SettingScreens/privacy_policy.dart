@@ -32,8 +32,8 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
           },
         ),
         title: Text(
-          "Payout History",
-          style: AppStyle.logoText.copyWith(fontSize: 18),
+          "Privacy Policy",
+          style: AppStyle.logoText.copyWith(fontSize: 20),
         ),
       ),
       backgroundColor: Colors.black,
@@ -122,7 +122,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
             ),
             const Gap(10),
             Text(
-              "If you have any questions about this Privacy Policy, please contact us at support@example.com.",
+              "If you have any questions about this Privacy Policy, please contact us at regolive0@gmail.com",
               style: TextStyle(fontSize: 16, color: Colors.white70),
             ),
             const Gap(30),
