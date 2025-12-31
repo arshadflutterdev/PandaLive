@@ -20,7 +20,7 @@ class SettingsDialogbox extends StatelessWidget {
     return AlertDialog(
       backgroundColor: Colors.transparent,
       content: Container(
-        height: height * 0.40,
+        height: height * 0.30,
         width: width,
         decoration: BoxDecoration(
           color: Colors.black87,
@@ -38,8 +38,8 @@ class SettingsDialogbox extends StatelessWidget {
                   onPressed(index);
                 },
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Gap(5),
                     Image(

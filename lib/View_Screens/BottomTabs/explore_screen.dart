@@ -62,12 +62,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       if (currentIndex == 0) {
                         Get.toNamed(AppRoutes.payout);
                       } else if (currentIndex == 1) {
-                        Get.toNamed(AppRoutes.transaction);
-                      } else if (currentIndex == 2) {
                         Get.toNamed(AppRoutes.privacy);
+                      } else if (currentIndex == 2) {
+                        Get.toNamed(AppRoutes.aboutus);
                       } else if (currentIndex == 3) {
                         Get.toNamed(AppRoutes.aboutus);
-                      } else if (currentIndex == 4) {
+                      } else if (currentIndex == 3) {
                         Get.snackbar("Logout", "You are Logged Out now");
                       }
                     },
