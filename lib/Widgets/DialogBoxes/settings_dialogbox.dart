@@ -20,7 +20,7 @@ class SettingsDialogbox extends StatelessWidget {
     return AlertDialog(
       backgroundColor: Colors.transparent,
       content: Container(
-        height: height * 0.30,
+        height: height * 0.40,
         width: width,
         decoration: BoxDecoration(
           color: Colors.black87,

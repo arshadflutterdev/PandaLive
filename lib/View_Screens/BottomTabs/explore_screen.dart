@@ -68,6 +68,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       } else if (currentIndex == 3) {
                         Get.toNamed(AppRoutes.aboutus);
                       } else if (currentIndex == 3) {
+                        Get.toNamed(AppRoutes.language);
+                      } else if (currentIndex == 4) {
                         Get.snackbar("Logout", "You are Logged Out now");
                       }
                     },

@@ -5,6 +5,7 @@ import 'package:pandalive/View_Screens/Auth/otp_screen.dart';
 import 'package:pandalive/View_Screens/Auth/setnew_password.dart';
 import 'package:pandalive/View_Screens/Auth/signup_screen.dart';
 import 'package:pandalive/View_Screens/SettingScreens/about_us.dart';
+import 'package:pandalive/View_Screens/SettingScreens/change_language.dart';
 import 'package:pandalive/View_Screens/SettingScreens/payout_history.dart';
 import 'package:pandalive/View_Screens/SettingScreens/privacy_policy.dart';
 import 'package:pandalive/View_Screens/SettingScreens/transaction_history.dart';
@@ -31,6 +32,7 @@ class AppRoutes {
   static const transaction = "/TransactionHistory";
   static const privacy = "/PrivacyPolicy";
   static const aboutus = "/AboutUs";
+  static const language = "/ChangeLanguage";
   static final routes = [
     GetPage(name: splash, page: () => SplashScreen()),
     GetPage(name: login, page: () => LoginScreen()),
@@ -47,5 +49,6 @@ class AppRoutes {
     GetPage(name: transaction, page: () => TransactionHistory()),
     GetPage(name: privacy, page: () => PrivacyPolicy()),
     GetPage(name: aboutus, page: () => AboutUs()),
+    GetPage(name: language, page: () => ChangeLanguage()),
   ];
 }

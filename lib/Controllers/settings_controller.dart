@@ -7,6 +7,7 @@ class SettingsController extends GetxController {
     SettingModel(image: AppImages.payout, text: 'Payout History'),
     SettingModel(image: AppImages.privicy, text: "Privacy Policy"),
     SettingModel(image: AppImages.aboutus, text: "About Us"),
+    SettingModel(image: AppImages.aboutus, text: "Language"),
     SettingModel(image: AppImages.logout, text: "Logout"),
   ].obs;
 }
