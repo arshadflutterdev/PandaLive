@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/Utils/app_style.dart';
@@ -171,27 +173,7 @@ class _GoLiveScreenState extends State<GoLiveScreen> {
                                 h: 20,
                                 bgColour: Colors.amber,
                                 onPressed: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                        backgroundColor: Colors.transparent,
-                                        content: Textfield0(
-                                          suffixx: Iconbutton0(
-                                            image: Icon(
-                                              Icons.send,
-                                              color: Colors.white,
-                                            ),
-                                            onPressed: () {},
-                                          ),
-                                          labeltext: Text(
-                                            "Add discription for Stream",
-                                          ),
-                                          keyboardtypee: TextInputType.text,
-                                        ),
-                                      );
-                                    },
-                                  );
+                                  Get.toNamed(AppRoutes.yourstream);
                                 },
                                 text: "Got it",
                               ),
