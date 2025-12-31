@@ -41,8 +41,10 @@ class SettingsDialogbox extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Gap(5),
+                    Gap(15),
                     Image(
+                      height: 30,
+
                       color: Colors.white,
                       image: AssetImage(settigs.image),
                     ),

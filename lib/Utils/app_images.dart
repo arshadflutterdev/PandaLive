@@ -26,6 +26,7 @@ class AppImages {
   static const String privicy = "assets/Icons/privicy.png";
   static const String transaction = "assets/Icons/privicy.png";
   static const String logout = "assets/Icons/Logout.png";
+  static const String language = "assets/Icons/world.png";
   //icons for navbar
   static const String explore = "assets/Icons/explore.png";
   static const String golive = "assets/Icons/golive.png";
