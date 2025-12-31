@@ -11,6 +11,7 @@ import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
 import 'package:pandalive/Widgets/Buttons/icontbutton0.dart';
+import 'package:pandalive/Widgets/DialogBoxes/settings_dialogbox.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ExploreScreen extends StatefulWidget {
@@ -52,54 +53,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      backgroundColor: Colors.transparent,
-                      content: Container(
-                        height: height * 0.40,
-                        width: width,
-                        decoration: BoxDecoration(
-                          color: Colors.black87,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: ListView.builder(
-                          itemCount: settingsController.items.length,
-                          itemBuilder: (context, index) {
-                            final settigs = settingsController.items[index];
-                            print("here is setting data ${settigs.text}");
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 5,
-                                vertical: 10,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Gap(5),
-                                  Image(
-                                    color: Colors.white,
-
-                                    image: AssetImage(settigs.image),
-                                  ),
-                                  Gap(15),
-                                  Expanded(
-                                    child: Text(
-                                      settigs.text,
-                                      style: AppStyle.buttext.copyWith(
-                                        color: Colors.white,
-                                        fontSize: 19,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    );
-                  },
+                  builder: (context) => SettingsDialogbox(
+                    items: settingsController.items,
+                    onPressed: () {},
+                  ),
                 );
               },
             ),
