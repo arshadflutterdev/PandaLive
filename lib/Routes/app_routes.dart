@@ -34,7 +34,7 @@ class AppRoutes {
   static const aboutus = "/AboutUs";
   static const language = "/ChangeLanguage";
   static final routes = [
-    GetPage(name: splash, page: () => SplashScreen()),
+    GetPage(name: splash, page: () => OnBoardingScreen()),
     GetPage(name: login, page: () => LoginScreen()),
     GetPage(name: signup, page: () => SignupScreen()),
     GetPage(name: forgetp, page: () => ForgetPassword()),

@@ -8,7 +8,6 @@ import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
 import 'package:pandalive/Widgets/Buttons/elevatedbutton0.dart';
-import 'package:pandalive/Widgets/Buttons/textbutton0.dart';
 
 class FounderMessage extends StatefulWidget {
   const FounderMessage({super.key});
@@ -99,7 +98,7 @@ Thank you for joining us and being part of this journey. Your support inspires u
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Timer(Duration(seconds: 2), () {
+      Timer(Duration(seconds: 1), () {
         dialogshow();
       });
     });
@@ -109,9 +108,8 @@ Thank you for joining us and being part of this journey. Your support inspires u
   Widget build(BuildContext context) {
     return WillPopScope(
       child: Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(color: AppColours.iconcolours),
-        ),
+        backgroundColor: Colors.black,
+        body: Center(child: CircularProgressIndicator(color: Colors.white)),
       ),
       onWillPop: () async {
         return false;

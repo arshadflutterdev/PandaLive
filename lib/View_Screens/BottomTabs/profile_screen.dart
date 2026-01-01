@@ -27,6 +27,8 @@ class _ProfileScreenState extends State<ProfileScreen>
     tabController = TabController(length: 3, vsync: this);
   }
 
+  RxBool isRemoved = false.obs;
+
   @override
   Widget build(BuildContext context) {
     final double height = HeightWidth.screenHeight(context);
@@ -58,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               fontSize: 12,
             ),
           ),
-          Gap(height * 0.025),
+          Gap(height * 0.020),
           TabBar(
             indicatorPadding: EdgeInsets.symmetric(horizontal: 2),
             indicatorSize: TabBarIndicatorSize.tab,
@@ -69,7 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               Column(
                 children: [
                   Image(
-                    height: height * 0.05,
+                    height: height * 0.045,
 
                     color: Colors.white,
                     image: AssetImage(AppImages.followers),
@@ -77,13 +79,16 @@ class _ProfileScreenState extends State<ProfileScreen>
                   Gap(5),
                   Text(
                     "210",
-                    style: AppStyle.buttext.copyWith(color: Colors.grey),
+                    style: AppStyle.buttext.copyWith(
+                      color: Colors.grey,
+                      fontSize: 15,
+                    ),
                   ),
                   Text(
                     "Followers",
                     style: AppStyle.buttext.copyWith(
                       color: AppColours.iconcolours,
-                      fontSize: 17,
+                      fontSize: 15,
                     ),
                   ),
                 ],
@@ -92,7 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               Column(
                 children: [
                   Image(
-                    height: height * 0.05,
+                    height: height * 0.045,
 
                     color: Colors.white,
                     image: AssetImage(AppImages.following),
@@ -100,13 +105,16 @@ class _ProfileScreenState extends State<ProfileScreen>
                   Gap(5),
                   Text(
                     "02",
-                    style: AppStyle.buttext.copyWith(color: Colors.grey),
+                    style: AppStyle.buttext.copyWith(
+                      color: Colors.grey,
+                      fontSize: 15,
+                    ),
                   ),
                   Text(
                     "Following",
                     style: AppStyle.buttext.copyWith(
                       color: AppColours.iconcolours,
-                      fontSize: 17,
+                      fontSize: 15,
                     ),
                   ),
                 ],
@@ -115,7 +123,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               Column(
                 children: [
                   Image(
-                    height: height * 0.05,
+                    height: height * 0.045,
 
                     // color: Colors.white,
                     image: AssetImage(AppImages.coins),
@@ -123,13 +131,16 @@ class _ProfileScreenState extends State<ProfileScreen>
                   Gap(5),
                   Text(
                     "0",
-                    style: AppStyle.buttext.copyWith(color: Colors.grey),
+                    style: AppStyle.buttext.copyWith(
+                      color: Colors.grey,
+                      fontSize: 15,
+                    ),
                   ),
                   Text(
                     "Coins",
                     style: AppStyle.buttext.copyWith(
                       color: AppColours.iconcolours,
-                      fontSize: 17,
+                      fontSize: 15,
                     ),
                   ),
                 ],
@@ -141,10 +152,13 @@ class _ProfileScreenState extends State<ProfileScreen>
               controller: tabController,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 2,
+                    horizontal: 10,
+                  ),
                   child: Column(
                     children: [
-                      Gap(10),
+                      Gap(4),
                       Textfield0(
                         icons: Icon(
                           Icons.search,
@@ -154,45 +168,54 @@ class _ProfileScreenState extends State<ProfileScreen>
                         keyboardtypee: TextInputType.text,
                       ),
                       Expanded(
-                        child: ListView.builder(
-                          itemCount: 10,
-                          itemBuilder: (context, index) {
-                            return Card(
-                              color: AppColours.textfieldC,
-                              child: ListTile(
-                                title: Text(
-                                  "Mr Rohit",
-                                  style: AppStyle.buttext.copyWith(
-                                    color: AppColours.iconcolours,
-                                  ),
-                                ),
-                                subtitle: Text(
-                                  "Pakistan",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                leading: CircleAvatar(
-                                  radius: 30,
-                                  backgroundImage: AssetImage(AppImages.boy2),
-                                ),
-                                trailing: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.amber,
-                                    shape: ContinuousRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15),
+                        child: MediaQuery.removePadding(
+                          context: context,
+                          removeTop: true,
+
+                          child: ListView.builder(
+                            itemCount: 10,
+                            itemBuilder: (context, index) {
+                              return Card(
+                                color: AppColours.textfieldC,
+                                child: ListTile(
+                                  title: Text(
+                                    "Mr Rohit",
+                                    style: AppStyle.buttext.copyWith(
+                                      color: AppColours.iconcolours,
                                     ),
                                   ),
-                                  onPressed: () {},
-                                  child: Text(
-                                    "Remove",
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
+                                  subtitle: Text(
+                                    "Pakistan",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  leading: CircleAvatar(
+                                    radius: 30,
+                                    backgroundImage: AssetImage(AppImages.boy2),
+                                  ),
+                                  trailing: Obx(
+                                    () => ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.amber,
+                                        shape: ContinuousRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            15,
+                                          ),
+                                        ),
+                                      ),
+                                      onPressed: () {},
+                                      child: Text(
+                                        "Remove",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ],
@@ -200,10 +223,13 @@ class _ProfileScreenState extends State<ProfileScreen>
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 2,
+                  ),
                   child: Column(
                     children: [
-                      Gap(10),
+                      Gap(4),
                       Textfield0(
                         icons: Icon(
                           Icons.search,
@@ -213,45 +239,50 @@ class _ProfileScreenState extends State<ProfileScreen>
                         keyboardtypee: TextInputType.text,
                       ),
                       Expanded(
-                        child: ListView.builder(
-                          itemCount: 10,
-                          itemBuilder: (context, index) {
-                            return Card(
-                              color: AppColours.textfieldC,
-                              child: ListTile(
-                                title: Text(
-                                  "Mr Rohit",
-                                  style: AppStyle.buttext.copyWith(
-                                    color: AppColours.iconcolours,
-                                  ),
-                                ),
-                                subtitle: Text(
-                                  "USA",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                leading: CircleAvatar(
-                                  radius: 30,
-                                  backgroundImage: AssetImage(AppImages.boy2),
-                                ),
-                                trailing: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.amber,
-                                    shape: ContinuousRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15),
+                        child: MediaQuery.removePadding(
+                          context: context,
+                          removeTop: true,
+
+                          child: ListView.builder(
+                            itemCount: 10,
+                            itemBuilder: (context, index) {
+                              return Card(
+                                color: AppColours.textfieldC,
+                                child: ListTile(
+                                  title: Text(
+                                    "Mr Rohit",
+                                    style: AppStyle.buttext.copyWith(
+                                      color: AppColours.iconcolours,
                                     ),
                                   ),
-                                  onPressed: () {},
-                                  child: Text(
-                                    "UnFollow",
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
+                                  subtitle: Text(
+                                    "USA",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  leading: CircleAvatar(
+                                    radius: 30,
+                                    backgroundImage: AssetImage(AppImages.boy2),
+                                  ),
+                                  trailing: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.amber,
+                                      shape: ContinuousRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                    ),
+                                    onPressed: () {},
+                                    child: Text(
+                                      "UnFollow",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ],
@@ -259,7 +290,10 @@ class _ProfileScreenState extends State<ProfileScreen>
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 2,
+                  ),
                   child: Column(
                     children: [
                       Container(
@@ -295,7 +329,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                           ],
                         ),
                       ),
-                      Gap(10),
+                      Gap(4),
                       Container(
                         height: 80,
                         decoration: BoxDecoration(

@@ -7,14 +7,14 @@ import 'package:pandalive/Utils/constant.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/Widgets/Buttons/elevatedbutton0.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     double h = HeightWidth.screenHeight(context);
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.fill,
-            image: AssetImage(AppImages.bgImage),
+            image: AssetImage(AppImages.appbackground),
           ),
         ),
         child: Column(
