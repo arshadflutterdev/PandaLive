@@ -40,65 +40,74 @@ class _SetnewPasswordState extends State<SetnewPassword> {
         backgroundColor: Colors.black,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Gap(height * 0.090),
-              Text(
-                "Arshad!",
-                style: AppStyle.logoText.copyWith(
-                  fontSize: 30,
-                  color: AppColours.iconcolours,
-                ),
-              ),
-              Gap(height * 0.02),
-
-              Center(
-                child: Text(
-                  textAlign: TextAlign.center,
-                  "Create new password for your account",
-                  style: AppStyle.buttext.copyWith(
-                    fontSize: 16,
-                    letterSpacing: 1,
-                    color: Colors.white,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Gap(height * 0.090),
+                Text(
+                  "Arshad!",
+                  style: AppStyle.logoText.copyWith(
+                    fontSize: 30,
+                    color: AppColours.iconcolours,
                   ),
                 ),
-              ),
+                Gap(height * 0.02),
 
-              Gap(height * 0.03),
-              Textfield0(
-                controller: passwordController,
-                labeltext: Text("New Password"),
-                keyboardtypee: TextInputType.emailAddress,
-              ),
-              Gap(3),
-              Text(
-                "Must be atleast 6 characters",
-                style: TextStyle(color: AppColours.iconcolours),
-              ),
-              Gap(height * 0.015),
-              Textfield0(
-                controller: confrimPassword,
-                labeltext: Text("Confirm Password"),
-                keyboardtypee: TextInputType.emailAddress,
-              ),
-              Gap(3),
-              Text(
-                "Both password Must match",
-                style: TextStyle(color: AppColours.iconcolours),
-              ),
-              Gap(height * 0.04),
-              Elevatedbutton0(
-                w: width * 0.88,
-                h: height * 0.065,
+                Center(
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    "Create new password for your account",
+                    style: AppStyle.buttext.copyWith(
+                      fontSize: 16,
+                      letterSpacing: 1,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
 
-                bgColour: Colors.amber,
-                onPressed: () {
-                  Get.offNamed(AppRoutes.login);
-                },
-                text: 'Submit NewPassword',
-              ),
-            ],
+                Gap(height * 0.03),
+                Textfield0(
+                  controller: passwordController,
+                  labeltext: Text("New Password"),
+                  keyboardtypee: TextInputType.emailAddress,
+                ),
+                Gap(3),
+                Text(
+                  "Must be atleast 6 characters",
+                  style: TextStyle(color: AppColours.iconcolours),
+                ),
+                Gap(height * 0.015),
+                Textfield0(
+                  controller: confrimPassword,
+                  labeltext: Text("Confirm Password"),
+                  keyboardtypee: TextInputType.emailAddress,
+                ),
+                Gap(3),
+                Text(
+                  "Both password Must match",
+                  style: TextStyle(color: AppColours.iconcolours),
+                ),
+                Gap(height * 0.04),
+                Elevatedbutton0(
+                  w: width * 0.88,
+                  h: height * 0.065,
+
+                  bgColour: Colors.amber,
+                  onPressed: () {
+                    Get.offNamed(AppRoutes.login);
+
+                    Get.snackbar(
+                      backgroundColor: Colors.black,
+                      colorText: Colors.white,
+                      "Login Via",
+                      "New Password",
+                    );
+                  },
+                  text: 'Submit NewPassword',
+                ),
+              ],
+            ),
           ),
         ),
       ),

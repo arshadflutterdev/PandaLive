@@ -207,9 +207,10 @@ class _YourStreamState extends State<YourStream> {
                                                 AppRoutes.bottomnav,
                                               );
                                               Get.snackbar(
-                                                "You Stream For",
+                                                "You Streamed For",
                                                 "02:20 mins",
-                                                backgroundColor: Colors.white,
+                                                colorText: Colors.white,
+                                                backgroundColor: Colors.black,
                                               );
                                             },
                                             child: Text(

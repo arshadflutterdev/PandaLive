@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
 import 'package:pandalive/Widgets/Buttons/elevatedbutton0.dart';
-import 'package:pandalive/Widgets/Buttons/icontbutton0.dart';
-import 'package:pandalive/Widgets/TextFields/textfield0.dart';
 
 class GoLiveScreen extends StatefulWidget {
   const GoLiveScreen({super.key});

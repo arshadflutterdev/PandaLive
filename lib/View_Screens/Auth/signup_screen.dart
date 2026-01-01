@@ -210,7 +210,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Textbutton0(
                       text: "LogIn",
                       onPressed: () {
-                        Get.toNamed(AppRoutes.foundermsg);
+                        Get.toNamed(AppRoutes.login);
                       },
                       textcolor: Colors.amber,
                     ),

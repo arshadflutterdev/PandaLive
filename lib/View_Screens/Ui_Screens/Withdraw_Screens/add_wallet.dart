@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/app_images.dart';
 import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
@@ -83,9 +84,20 @@ class _AddWalletState extends State<AddWallet> {
                 onPressed: () {
                   // TODO: Withdraw API
                   Get.snackbar(
-                    "Congratulations",
-                    "Withdraw requist sumited Successfully",
+                    "Success ✅", // Title with icon
+                    "Your withdrawal request has been submitted successfully. It will be processed within 2-3 business days.",
+                    snackPosition:
+                        SnackPosition.BOTTOM, // Appears at bottom (better UX)
+                    backgroundColor: Colors.green.shade700, // Green for success
+                    colorText: Colors.white,
+                    borderRadius: 10,
+                    margin: EdgeInsets.all(12),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                    icon: Icon(Icons.check_circle_outline, color: Colors.white),
+                    duration: Duration(seconds: 4),
+                    forwardAnimationCurve: Curves.easeOutBack,
                   );
+                  Get.offAllNamed(AppRoutes.);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,

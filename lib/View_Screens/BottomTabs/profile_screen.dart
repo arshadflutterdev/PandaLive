@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:pandalive/Controllers/settings_controller.dart';
 import 'package:pandalive/Routes/app_routes.dart';
 import 'package:pandalive/Utils/app_colours.dart';
 import 'package:pandalive/Utils/app_images.dart';
@@ -9,6 +10,7 @@ import 'package:pandalive/Utils/app_style.dart';
 import 'package:pandalive/Utils/constant.dart';
 import 'package:pandalive/Widgets/Buttons/elevatedbutton0.dart';
 import 'package:pandalive/Widgets/Buttons/icontbutton0.dart';
+import 'package:pandalive/Widgets/DialogBoxes/settings_dialogbox.dart';
 import 'package:pandalive/Widgets/TextFields/textfield0.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -27,7 +29,8 @@ class _ProfileScreenState extends State<ProfileScreen>
     tabController = TabController(length: 3, vsync: this);
   }
 
-  RxBool isRemoved = false.obs;
+  SettingsController settingsController = SettingsController();
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +53,32 @@ class _ProfileScreenState extends State<ProfileScreen>
               Iconbutton0(
                 image: Icon(Icons.edit_outlined, color: Colors.white),
                 onPressed: () {},
+              ),
+              Iconbutton0(
+                image: Icon(Icons.settings, color: AppColours.iconcolours),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => SettingsDialogbox(
+                      items: settingsController.items,
+                      onPressed: (index) {
+                        currentIndex = index;
+
+                        if (currentIndex == 0) {
+                          Get.toNamed(AppRoutes.payout);
+                        } else if (currentIndex == 1) {
+                          Get.toNamed(AppRoutes.privacy);
+                        } else if (currentIndex == 2) {
+                          Get.toNamed(AppRoutes.aboutus);
+                        } else if (currentIndex == 3) {
+                          Get.toNamed(AppRoutes.language);
+                        } else if (currentIndex == 4) {
+                          Get.snackbar("Logout", "You are Logged Out now");
+                        }
+                      },
+                    ),
+                  );
+                },
               ),
             ],
           ),
@@ -192,23 +221,19 @@ class _ProfileScreenState extends State<ProfileScreen>
                                     radius: 30,
                                     backgroundImage: AssetImage(AppImages.boy2),
                                   ),
-                                  trailing: Obx(
-                                    () => ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.amber,
-                                        shape: ContinuousRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            15,
-                                          ),
-                                        ),
+                                  trailing: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.amber,
+                                      shape: ContinuousRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15),
                                       ),
-                                      onPressed: () {},
-                                      child: Text(
-                                        "Remove",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.black,
-                                        ),
+                                    ),
+                                    onPressed: () {},
+                                    child: Text(
+                                      "Remove",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black,
                                       ),
                                     ),
                                   ),
